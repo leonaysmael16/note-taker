@@ -27,5 +27,41 @@ function deleteNote(id) {
 
 module.exports = (app) => {
     app.get('/api/notes', (req, res) => {
-           })
+        
+    let data = JSON.parse(fs.readFileSync('./db/db.json', 'UTF-8'));
+        console.log('Note here:' + JSON.stringify(data));
+
+        res.json(data);
+
+    });
+
+    app.post('api/notes', (req, res) => {
+
+        const newNote = req.body;
+
+        newNote.id = uuidv4();
+
+        let ddata = JSON.parse(fs.readFileSync('./db/bd.json', 'utf-8'));
+
+        data.push(newNote);
+
+        fs.writeFileSync('./db/db.json', JSON.stringify(data))
+
+        console.log('Note Added to database');
+
+        res.JSON(data);
+    });
+
+    app.delete('/api/notes/:id', (req, res) => {
+
+        const noteID = req.params.id.toString();
+        console.log(noteID);
+
+        deleteNote(noteID)
+
+        .then(() => res.json({ok: true }))
+        .catch((err) => res.status(500)).json(err);
+
+
+    });
 }
