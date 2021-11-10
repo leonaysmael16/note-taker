@@ -24,3 +24,8 @@ function deleteNote(id) {
     return getNotes().then((notes) => notes.filter((note) => note.id !== id))
     .then((filteredNotes) => write(filteredNotes));
 }
+
+module.exports = (app) => {
+    app.get('/api/notes', (req, res) => {
+           })
+}
