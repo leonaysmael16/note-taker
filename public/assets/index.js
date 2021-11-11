@@ -1,3 +1,5 @@
+const notes = require("../../routes/notes");
+
 let noteTitle;
 let noteText;
 let saveNoteBtn;
@@ -9,7 +11,7 @@ const show = (elem) => {
     elem.style.display = 'inline';
 };
 
-const hidde = (elem) => {
+const hide = (elem) => {
     elem.style.display = 'none;'
 };
 
@@ -40,7 +42,7 @@ const deleteNote = (id) =>
         },
     });
 
-const activeNote = () => {
+const activeNoteRender = () => {
     hide(saveNoteBtn);
 
     if (activeNote.id) {
@@ -82,4 +84,23 @@ const deleteNoteHandle = (e) => {
         activeNote();
     });
 };
+
+const noteViewHandle = (e) => {
+    e.preventDefault;
+    activeNote = JSON.parse(e.target.parentElement.getAttribute('data-note'));
+    activeNoteRender();
+};
+
+const handleRenderSaveBtn = () => {
+    if (!noteTitle.value.trim() || !note.value.trim()) {
+        hide(saveNoteBtn);
+    } else {
+        show(saveNoteBtn);
+    }
+};
+
+const noteListRender = async (notes) => {
+    let notesJSON = await notes.json();
+    if (window.location)
+}
 
