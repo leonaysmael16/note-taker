@@ -4,8 +4,15 @@ let noteTitle;
 let noteText;
 let saveNoteBtn;
 let noteList;
+let newNoteBtn;
 
-
+if (window.location.pathname === '/notes') {
+    noteTitle = document.querySelector('.note-title');
+    noteText = document.querySelector('.note-textarea');
+    saveNoteBtn = document.querySelector('.save-note');
+    newNoteBtn = document.querySelector('.new-note');
+    noteList = document.querySelectorAll('.list-container .list-group');
+  }
 
 const show = (elem) => {
     elem.style.display = 'inline';
@@ -101,6 +108,57 @@ const handleRenderSaveBtn = () => {
 
 const noteListRender = async (notes) => {
     let notesJSON = await notes.json();
-    if (window.location)
+    if (window.location.pathname === '/notes') {
+        noteList.forEach((el) => (el.innerHTML = ''));
+    }
+
+    let noteListItems =[];
+
+    const createLi = (text, delBtn = true) => {
+        const liEl = document.createElement('li');
+        liEl.classList.add('list-item-title');
+        SVGTSpanElement.addEventListener('click', handleNoteView);
+
+        liEl.append(spanEl);
+
+        if (delBtn) {
+            const delBtnEl = document.createElement('i');
+            delBtnEl.classList.add(
+                'fas',
+                'fa-trash-alt',
+                'float-right',
+                'text-danger',
+                'delete-note'
+            );
+            delBtnEl.addEventListener('click', handleNoteDelete);
+
+            liEl.append(delBtnEl);
+        }
+        return liEl;
+    };
+
+    if (notesJSON.length === 0) {
+        noteListItems.push(createLi('No saved notes', false));
+    }
+
+    notesJSON.forEach((note) => {
+        const li = createLi(note.title);
+        li.dataset.note = JSON.stringify(note);
+
+        noteListItems.push(li);
+    });
+     if (window.location.pathname === '/notes') {
+         noteListItems.forEach((note) => noteList[0].append(note));
+     }
+};
+
+const getandRenderNotes = () => getNotes().then(noteListRender);
+
+if (window.location.pathname === '/notes') {
+    saveNoteBtn.addEventListener('click', noteSaveHandle);
+    newNoteBtn.addEventListener('click', noteViewHandle);
+    noteTitle.addEventListener('keyup', handleRenderSaveBtn);
+    noteText.addEventListener('keyup', handleRenderSaveBtn);
 }
 
+getandRenderNotes();
