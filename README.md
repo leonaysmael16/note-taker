@@ -1,1 +1,4 @@
-# note-taker
+# Note Taker
+
+# Purpose of Project
+
