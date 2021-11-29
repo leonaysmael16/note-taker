@@ -1,13 +1,12 @@
-const fs = require('fs');
-const util = require('util');
-const path = require('path');
-
+const fs = require('fs')
+const path = require('path')
+const util =require('util')
 const { v4:uuidv4 } = require('uuid');
 const readFileAsync = util.promisify(fs.readFile);
 const writeFileAsync = util.promisify(fs.writeFile);
 
 function read() {
-    return readFileAsync('db/ddb.json', 'utf8');
+    return readFileAsync('db/db.json', 'utf8');
 }
 
 const getNotes = function () {

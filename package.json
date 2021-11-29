@@ -1,25 +1,9 @@
 {
-  "name": "note-taker",
-  "version": "1.0.0",
-  "description": "note taker app package.json file",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leonaysmael16/note-taker.git"
-  },
-  "author": "Leona Y",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/leonaysmael16/note-taker/issues"
-  },
-  "homepage": "https://github.com/leonaysmael16/note-taker#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
     "express": "^4.17.1",
-    "inquirer": "^8.2.0"
+    "file-system": "^2.2.2",
+    "path": "^0.12.7",
+    "util": "^0.12.4",
+    "uuid": "^8.3.2"
   }
 }

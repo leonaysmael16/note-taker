@@ -1,4 +1,4 @@
-const notes = require("../../routes/notes");
+const notes = require("./routes/notes.js");
 
 let noteTitle;
 let noteText;
