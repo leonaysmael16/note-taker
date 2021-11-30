@@ -5,5 +5,22 @@
     "path": "^0.12.7",
     "util": "^0.12.4",
     "uuid": "^8.3.2"
-  }
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "note-taker",
+  "description": "# Purpose of Project",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leonaysmael16/note-taker.git"
+  },
+  "author": "Leona Ysmael",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leonaysmael16/note-taker/issues"
+  },
+  "homepage": "https://github.com/leonaysmael16/note-taker#readme"
 }
